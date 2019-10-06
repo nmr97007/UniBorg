@@ -15,6 +15,7 @@ import asyncio
 import shutil
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+VERY_PIC = "https://telegra.ph/file/7f4d4982dd4eec342af0a.jpg" 
 
 @borg.on(admin_cmd(pattern="autopp"))
 
@@ -22,7 +23,7 @@ async def autopic(event):
 
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
 
-    downloader = SmartDL(Config.VERY_PIC, downloaded_file_name, progress_bar=False)
+    downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=False)
 
     downloader.start(blocking=False)
 
