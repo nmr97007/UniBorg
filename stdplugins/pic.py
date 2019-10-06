@@ -16,7 +16,7 @@ import shutil
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
-@borg.on(admin_cmd("autopp ?(.*)"))
+@borg.on(admin_cmd(pattern="autopp"))
 
 async def autopic(event):
 
