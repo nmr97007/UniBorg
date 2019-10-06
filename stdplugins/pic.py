@@ -43,7 +43,7 @@ async def autopic(event):
 
         file_test = im.save(photo, "PNG")
 
-        current_time = datetime.now().strftime("@user_nmr\nTime: %H:%M:%S \nDate: %d.%m.%y")
+        current_time = datetime.now().strftime("♥️@user_nmr♥️\nTime: %H:%M:%S \nDate: %d.%m.%y")
 
         img = Image.open(photo)
 
