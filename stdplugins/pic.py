@@ -70,7 +70,7 @@ async def autopic(event):
 
             counter -= 5
 
-            await asyncio.sleep(75)
+            await asyncio.sleep(60)
 
         except:
 
