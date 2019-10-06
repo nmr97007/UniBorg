@@ -50,7 +50,7 @@ async def autopic(event):
 
         drawn_text = ImageDraw.Draw(img)
 
-        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
+        fnt = ImageFont.truetype("arial.ttf", 30)
 
         drawn_text.text((100, 50), current_time, font=fnt, fill=(255, 255, 255))
 
