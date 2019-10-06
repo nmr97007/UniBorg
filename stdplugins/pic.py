@@ -41,9 +41,9 @@ async def autopic(event):
 
         im = Image.open(photo)
 
-        file_test = im.rotate(counter, expand=False).save(photo, "PNG")
+        file_test = im.save(photo, "PNG")
 
-        current_time = datetime.now().strftime("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \n ⚡USERBOT TIMEZONE⚡ \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡")
+        current_time = datetime.now().strftime("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \n Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡")
 
         img = Image.open(photo)
 
@@ -69,7 +69,7 @@ async def autopic(event):
 
             counter -= 5
 
-            await asyncio.sleep(65)
+            await asyncio.sleep(120)
 
         except:
 
