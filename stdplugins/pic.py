@@ -22,7 +22,7 @@ async def autopic(event):
 
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
 
-    downloader = SmartDL(Var.P_PIC, downloaded_file_name, progress_bar=False)
+    downloader = SmartDL(Config.VERY_PIC, downloaded_file_name, progress_bar=False)
 
     downloader.start(blocking=False)
 
