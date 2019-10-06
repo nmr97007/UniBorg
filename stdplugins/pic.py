@@ -14,7 +14,7 @@ import asyncio
 
 import shutil
 
-FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+FONT_FILE_TO_USE = "https://pes2020.sirv.com/Arizona-Regular.ttf"
 VERY_PIC = "https://telegra.ph/file/7f4d4982dd4eec342af0a.jpg" 
 
 @borg.on(admin_cmd(pattern="autopp"))
@@ -43,7 +43,7 @@ async def autopic(event):
 
         file_test = im.save(photo, "PNG")
 
-        current_time = datetime.now().strftime("❤️ @user_nmr ♥️ \nTime: %H:%M:%S \nDate: %d.%m.%y \n ")
+        current_time = datetime.now().strftime("@user_nmr\nTime: %H:%M:%S \nDate: %d.%m.%y")
 
         img = Image.open(photo)
 
@@ -51,7 +51,7 @@ async def autopic(event):
 
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
 
-        drawn_text.text((10, 250), current_time, font=fnt, fill=(255, 255, 255))
+        drawn_text.text((100, 50), current_time, font=fnt, fill=(255, 255, 255))
 
         img.save(photo)
 
@@ -69,7 +69,7 @@ async def autopic(event):
 
             counter -= 5
 
-            await asyncio.sleep(120)
+            await asyncio.sleep(75)
 
         except:
 
