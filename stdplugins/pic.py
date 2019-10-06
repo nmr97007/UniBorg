@@ -43,7 +43,7 @@ async def autopic(event):
 
         file_test = im.save(photo, "PNG")
 
-        current_time = datetime.now().strftime("♥️@user_nmr♥️\n---------------\nTime: %H:%M:%S \nDate: %d.%m.%y\n---------------")
+        current_time = datetime.now().strftime("♥️@user_nmr♥️\n Time: %H:%M:%S \nDate: %d.%m.%y")
 
 
         img = Image.open(photo)
@@ -52,7 +52,7 @@ async def autopic(event):
 
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
 
-        drawn_text.text((300,50), current_time, font=fnt, fill=(255, 255, 255))
+        drawn_text.text((10,250), current_time, font=fnt, fill=(255, 255, 255))
 
         img.save(photo)
 
