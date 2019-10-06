@@ -22,7 +22,7 @@ async def autopic(event):
 
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
 
-    downloader = SmartDL(https://telegra.ph/file/7f4d4982dd4eec342af0a.jpg, downloaded_file_name, progress_bar=False)
+    downloader = SmartDL(Config.P_PIC, downloaded_file_name, progress_bar=False)
 
     downloader.start(blocking=False)
 
