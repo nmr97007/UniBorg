@@ -45,6 +45,8 @@ async def autopic(event):
 
         file_test = im.save(photo, "PNG")
 
+        now_utc = datetime.now(timezone('UTC'))
+
         now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
      
 
