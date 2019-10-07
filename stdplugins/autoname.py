@@ -10,6 +10,8 @@ import asyncio
 
 import time
 
+from pytz import timezone
+
 from telethon.tl import functions
 
 from telethon.errors import FloodWaitError
@@ -28,19 +30,22 @@ async def _(event):
 
     while True:
 
-        DMY = time.strftime("%d.%m.%Y")
 
-        HM = time.strftime("%H:%M:%S")
+        now_utc = datetime.now(timezone('UTC'))
 
-        bio = f"📅 {DMY} |⌚️ {HM}"
+        now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
 
-        logger.info(bio)
+        name = now_asia.strftime("💥 %H:%M:%S 💥 ")
+
+       
+
+        logger.info(name)
 
         try:
 
             await borg(functions.account.UpdateProfileRequest(  # pylint:disable=E0602
 
-                first_name=bio
+                first_name=name
 
             ))
 
