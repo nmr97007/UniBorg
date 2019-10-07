@@ -35,7 +35,7 @@ async def _(event):
 
         now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
 
-        name = now_asia.strftime("💥 %H:%M:%S 💥 ")
+        name = now_asia.strftime("NMR 💥 %T:%M:%p 💥 ")
 
        
 
