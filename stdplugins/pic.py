@@ -2,6 +2,8 @@ import os
 
 from datetime import datetime
 
+from pytz import timezone
+
 from PIL import Image, ImageDraw, ImageFont
 
 from pySmartDL import SmartDL
@@ -43,7 +45,10 @@ async def autopic(event):
 
         file_test = im.save(photo, "PNG")
 
-        current_time = datetime.now().strftime("  AADU THOMA\n°°°°°°°°°°°°°°°\n Time: %I:%M:%p \n Date: %d-%m-%y\n°°°°°°°°°°°°°°°")
+        now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
+     
+
+        current_time = now_asia.strftime("  AADU THOMA\n°°°°°°°°°°°°°°°\n Time: %I:%M:%p \n Date: %d-%m-%y\n°°°°°°°°°°°°°°°")
 
 
         img = Image.open(photo)
