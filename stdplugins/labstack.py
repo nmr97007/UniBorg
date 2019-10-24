@@ -20,7 +20,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 
 from uniborg.util import admin_cmd
 
-@borg.on(admin_cmd("labstack(.*)"))
+@borg.on(admin_cmd("labstack ?(.*)"))
 
 async def labstack(event):
 
