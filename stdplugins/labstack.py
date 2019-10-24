@@ -40,7 +40,7 @@ async def labstack(event):
 
     elif reply:
 
-        filebase = await event.client.download_media(reply.media, Config.TEMP_DOWNLOAD_DIRECTORY)
+        filebase = await event.client.download_media(reply.media, Config.TMP_DOWNLOAD_DIRECTORY)
 
     else:
 
