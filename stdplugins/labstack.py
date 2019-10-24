@@ -60,7 +60,7 @@ async def labstack(event):
 
     r2json = json.loads(r2.text)
 
-    url = "https://up.labstack.com/api/v1/links/47WoxzRr/send".format(r2json['code'])
+    url = "https://up.labstack.com/api/v1/links/{}/send".format(r2json['code'])
 
     max_days = 7
 
@@ -96,6 +96,6 @@ async def labstack(event):
 
         logger.info(t_response)
 
-        t_response_arry = "https://up.labstack.com/api/v1/links/47WoxzRr/receive".format(r2json['code'])
+        t_response_arry = "https://up.labstack.com/api/v1/links/{}/receive".format(r2json['code'])
 
     await event.edit(t_response_arry + "\nMax Days:" + str(max_days), link_preview=False)
