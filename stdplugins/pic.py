@@ -43,7 +43,7 @@ async def autopic(event):
 
         im = Image.open(photo)
 
-        file_test = im.save(photo, "PNG")
+        file_test = im.save(photo, "JPG")
 
         now_utc = datetime.now(timezone('UTC'))
 
