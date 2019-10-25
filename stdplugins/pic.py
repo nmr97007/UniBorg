@@ -44,12 +44,14 @@ async def autopic(event):
 
         downloader.start(blocking=False)
         await asyncio.sleep(4)
+        newsize = (500, 500)
 
         shutil.copy(downloaded_file_name, photo)
-
+        
+        
         im = Image.open(photo)
-
-        file_test = im.save(photo, "PNG")
+        imgr = im.resize(newsize)
+        file_test = imgr.save(photo, "PNG")
 
         now_utc = datetime.now(timezone('UTC'))
 
@@ -57,7 +59,6 @@ async def autopic(event):
      
 
         current_time = now_asia.strftime("%I:%M:%p\n%d-%m-%y\n")
-
 
         img = Image.open(photo)
 
