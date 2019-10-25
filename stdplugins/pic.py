@@ -38,6 +38,11 @@ async def autopic(event):
     counter = -5
 
     while True:
+        downloaded_file_name = "./DOWNLOADS/original_pic.png"
+
+        downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=False)
+
+        downloader.start(blocking=False)
 
         shutil.copy(downloaded_file_name, photo)
 
