@@ -43,6 +43,7 @@ async def autopic(event):
         downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=False)
 
         downloader.start(blocking=False)
+        await asyncio.sleep(4)
 
         shutil.copy(downloaded_file_name, photo)
 
@@ -82,7 +83,7 @@ async def autopic(event):
 
             counter -= 5
 
-            await asyncio.sleep(70)
+            await asyncio.sleep(66)
 
         except:
 
