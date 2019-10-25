@@ -4,7 +4,7 @@ from datetime import datetime
 
 from pytz import timezone
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFile
 
 from pySmartDL import SmartDL
 
@@ -16,7 +16,7 @@ import asyncio
 
 import shutil
 
-FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+FONT_FILE_TO_USE = "/usr/share/fonts/truetype/freefont/FreeMono.ttf"
 VERY_PIC = "https://picsum.photos/1280" 
 
 @borg.on(admin_cmd(pattern="autopp"))
@@ -48,7 +48,7 @@ async def autopic(event):
 
         shutil.copy(downloaded_file_name, photo)
         
-        
+        ImageFile.LOAD_TRUNCATED_IMAGES = True
         im = Image.open(photo)
         imgr = im.resize(newsize)
         file_test = imgr.save(photo, "PNG")
@@ -58,7 +58,7 @@ async def autopic(event):
         now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
      
 
-        current_time = now_asia.strftime("%I:%M:%p\n%d-%m-%y\n")
+        current_time = now_asia.strftime("%I:%M:%p\n%d/%m/%y\n\n@user_nmr")
 
         img = Image.open(photo)
 
@@ -66,7 +66,7 @@ async def autopic(event):
 
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
 
-        drawn_text.text((200,350), current_time, font=fnt, fill=(19, 157, 232))
+        drawn_text.text((180,350), current_time, font=fnt, fill=(0, 102, 204))
 
         img.save(photo)
 
