@@ -73,7 +73,7 @@ async def autopic(event):
 
             ))
 
-            os.remove(photo)
+            os.remove(downloaded_file_name)
 
             counter -= 5
 
