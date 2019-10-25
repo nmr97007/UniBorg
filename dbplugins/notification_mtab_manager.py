@@ -166,7 +166,7 @@ async def on_new_private_message(event):
         # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
         return
 
-    sender = await event.client.get_entity(chat_id)
+    sender = await event.client.get_entity(PeerUser(chat_id))
     if chat_id == borg.uid:
         # don't log Saved Messages
         return
