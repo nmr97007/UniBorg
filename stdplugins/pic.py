@@ -16,7 +16,7 @@ import asyncio
 
 import shutil
 
-FONT_FILE_TO_USE = "/usr/share/fonts/truetype/freefont/FreeMono.ttf"
+FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 VERY_PIC = "https://picsum.photos/1280" 
 
 @borg.on(admin_cmd(pattern="autopp"))
