@@ -176,9 +176,9 @@ async def on_new_private_message(event):
         # don't log verified accounts
         return
 
-    """if not pmpermit_sql.is_approved(chat_id):
+    if not pmpermit_sql.is_approved(chat_id):
         # pm permit
-        await do_pm_permit_action(chat_id, event)"""
+        await do_pm_permit_action(chat_id, event)
 
     if not no_log_pms_sql.is_approved(chat_id):
         # log pms
