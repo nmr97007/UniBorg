@@ -17,7 +17,7 @@ import asyncio
 import shutil
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
-VERY_PIC = "https://pes2020.sirv.com/mn.jpg" 
+VERY_PIC = "https://picsum.photos/1280" 
 
 @borg.on(admin_cmd(pattern="autopp"))
 
@@ -50,7 +50,7 @@ async def autopic(event):
         now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
      
 
-        current_time = now_asia.strftime("°°°°°°°°°°°°°°°\n Time: %I:%M:%p\n Date: %d-%m-%y\n°°°°°°°°°°°°°°°")
+        current_time = now_asia.strftime("%I:%M:%p\n%d-%m-%y\n")
 
 
         img = Image.open(photo)
