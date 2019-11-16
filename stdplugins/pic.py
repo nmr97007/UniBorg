@@ -53,25 +53,37 @@ async def autopic(event):
         now_utc = datetime.now(timezone('UTC'))
 
         now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
-     
-
-        current_time = now_asia.strftime("%d %b %Y\n@user_nmr")
-
+        x = 350
+        y = 15
+        x2 = 250
+        y2 = 430
+        white = (255, 255, 255) 
+        black = (0, 0, 0)
+        cn_time = now_asia.strftime("%d %b %Y\n@user_nmr")
+        ct_time = now_asia.strftime("%I:%M %p")
         img = Image.open(photo)
 
         drawn_text = ImageDraw.Draw(img)
 
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 20)
-
-        drawn_text.text((350,15), current_time, font=fnt, fill=(0, 102, 204))
-
-        img.save(photo)
-        img2 = Image.open(photo)
-        draw2 = ImageDraw.Draw(img2)
-        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 40)
-
-        ct_time = now_asia.strftime("%I:%M %p")
-        drawn_text.text((250,430), ct_time, font=fnt, fill=(255, 0, 0))
+        fnt2 = ImageFont.truetype(FONT_FILE_TO_USE, 40)
+        #top_part
+        #outline 
+        drawn_text.text((x+2,y), cn_time, font=fnt, fill=white)
+        drawn_text.text((x-2,y), cn_time, font=fnt, fill=white)
+        drawn_text.text((x,y+2), cn_time, font=fnt, fill=white)
+        drawn_text.text((x,y-2), cn_time, font=fnt, fill=white)
+        #main
+        drawn_text.text((x,y), cn_time, font=fnt, fill=(0, 102, 204))
+        #bottom
+        #outline
+        drawn_text.text((x2+3,y), ct_time, font=fnt, fill=black)
+        drawn_text.text((x2-3,y), ct_time, font=fnt, fill=black)
+        drawn_text.text((x,y2+3), ct_time, font=fnt, fill=black)
+        drawn_text.text((x,y2-3), ct_time, font=fnt, fill=black)
+        #main        
+        drawn_text.text((x2,y2), ct_time, font=fnt, fill=(255, 0, 0))
+        #draw_complete
         img.save(photo)
 
         file = await event.client.upload_file(photo)  # pylint:disable=E0602
