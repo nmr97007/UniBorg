@@ -55,7 +55,7 @@ async def autopic(event):
         now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
      
 
-        current_time = now_asia.strftime("%d %b %y")
+        current_time = now_asia.strftime("%d %b %Y\n@user_nmr")
 
         img = Image.open(photo)
 
@@ -63,7 +63,7 @@ async def autopic(event):
 
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 25)
 
-        drawn_text.text((250,20), current_time, font=fnt, fill=(0, 102, 204))
+        drawn_text.text((350,15), current_time, font=fnt, fill=(0, 102, 204))
 
         img.save(photo)
         img2 = Image.open(photo)
@@ -71,7 +71,7 @@ async def autopic(event):
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 40)
 
         ct_time = now_asia.strftime("%I:%M %p")
-        drawn_text.text((210,400), ct_time, font=fnt, fill=(0, 102, 204))
+        drawn_text.text((245,430), ct_time, font=fnt, fill=(255, 0, 0))
         img.save(photo)
 
         file = await event.client.upload_file(photo)  # pylint:disable=E0602
