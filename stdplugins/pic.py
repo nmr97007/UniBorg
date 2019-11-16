@@ -17,7 +17,7 @@ import asyncio
 import shutil
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
-VERY_PIC = "https://picsum.photos/1280" 
+VERY_PIC = "https://picsum.photos/500" 
 
 @borg.on(admin_cmd(pattern="autopp"))
 
@@ -44,14 +44,11 @@ async def autopic(event):
 
         downloader.start(blocking=False)
         await asyncio.sleep(30)
-        newsize = (500, 500)
-
         shutil.copy(downloaded_file_name, photo)
         
         ImageFile.LOAD_TRUNCATED_IMAGES = True
         im = Image.open(photo)
-        imgr = im.resize(newsize)
-        file_test = imgr.save(photo, "PNG")
+        file_test = im.save(photo, "PNG")
 
         now_utc = datetime.now(timezone('UTC'))
 
@@ -84,7 +81,7 @@ async def autopic(event):
 
             counter -= 5
 
-            await asyncio.sleep(40)
+            await asyncio.sleep(35)
 
         except:
 
