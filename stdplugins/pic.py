@@ -77,10 +77,10 @@ async def autopic(event):
         drawn_text.text((x,y), cn_time, font=fnt, fill=(0, 102, 204))
         #bottom
         #outline
-        drawn_text.text((x2+1,y), ct_time, font=fnt2, fill=black)
-        drawn_text.text((x2-1,y), ct_time, font=fnt2, fill=black)
-        drawn_text.text((x,y2+1), ct_time, font=fnt2, fill=black)
-        drawn_text.text((x,y2-1), ct_time, font=fnt2, fill=black)
+        drawn_text.text((x2+1,y2), ct_time, font=fnt2, fill=black)
+        drawn_text.text((x2-1,y2), ct_time, font=fnt2, fill=black)
+        drawn_text.text((x2,y2+1), ct_time, font=fnt2, fill=black)
+        drawn_text.text((x2,y2-1), ct_time, font=fnt2, fill=black)
         #main        
         drawn_text.text((x2,y2), ct_time, font=fnt2, fill=(255, 0, 0))
         #draw_complete
