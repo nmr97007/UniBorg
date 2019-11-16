@@ -16,7 +16,7 @@ import asyncio
 
 import shutil
 
-FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 VERY_PIC = "https://picsum.photos/500" 
 
 @borg.on(admin_cmd(pattern="autopp"))
@@ -55,16 +55,23 @@ async def autopic(event):
         now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
      
 
-        current_time = now_asia.strftime("%I:%M:%p\n%d/%m/%y\n\n@user_nmr")
+        current_time = now_asia.strftime("%d %b %y")
 
         img = Image.open(photo)
 
         drawn_text = ImageDraw.Draw(img)
 
-        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
+        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 25)
 
-        drawn_text.text((180,350), current_time, font=fnt, fill=(0, 102, 204))
+        drawn_text.text((250,20), current_time, font=fnt, fill=(0, 102, 204))
 
+        img.save(photo)
+        img2 = Image.open(photo)
+        draw2 = ImageDraw.Draw(img2)
+        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 40)
+
+        ct_time = now_asia.strftime("%I:%M %p")
+        drawn_text.text((210,400), ct_time, font=fnt, fill=(0, 102, 204))
         img.save(photo)
 
         file = await event.client.upload_file(photo)  # pylint:disable=E0602
