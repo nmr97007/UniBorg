@@ -17,7 +17,8 @@ async def autopic(event):
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
     while True:  
         downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=True)
-        downloader.start(blocking=False)  
+        downloader.start(blocking=False) 
+        photo = "photop.png" 
         while not downloader.isFinished():
               place_holder = None  
         if downloader.isSuccessful():
