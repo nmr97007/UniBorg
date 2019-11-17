@@ -6,6 +6,7 @@ from telethon.tl import functions
 from uniborg.util import admin_cmd
 import asyncio
 import shutil
+from pySmartDL import SmartDL
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 VERY_PIC = "http://lorempixel.com/500/500/" 
