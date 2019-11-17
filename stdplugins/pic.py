@@ -7,6 +7,7 @@ from uniborg.util import admin_cmd
 import asyncio
 import shutil
 from pySmartDL import SmartDL
+import urllib.request
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 VERY_PIC = "http://picsum.photos/500"
@@ -14,17 +15,13 @@ VERY_PIC = "http://picsum.photos/500"
 @borg.on(admin_cmd(pattern="autopp"))
 async def autopic(event):
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
-    while True:  
-        downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=True)
-        downloader.start(blocking=False) 
-        photo = "photop.png" 
-        while not downloader.isFinished():
-              place_holder = None  
-        if downloader.isSuccessful():
-           downloaded_file_name = "./DOWNLOADS/original_pic.png"            
-        else: 
-            downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=True)
-            downloader.start(blocking=False)
+    while True: 
+        photo = "photop.png"
+        try: 
+           downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=True)
+           downloader.start(blocking=False) 
+        except: 
+              urllib.request.urlretrieve("https://telegra.ph/file/6aa1e4274cb3ca3770974.jpg", downloaded_file_name) 
         shutil.copy(downloaded_file_name, photo) 
         im = Image.open(photo)
         file_test = im.save(photo, "PNG")
@@ -65,7 +62,7 @@ async def autopic(event):
             await event.client(functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
                 file
             ))
-            photo.unlink()
+            os.remove(photo)
             await asyncio.sleep(65)
         except:
             return
