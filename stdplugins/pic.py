@@ -2,7 +2,8 @@ import os
 from datetime import datetime
 from pytz import timezone
 from PIL import Image, ImageDraw, ImageFont, ImageFile
-from pySmartDL import SmartDL
+from pathlib import Path
+import httpx
 from telethon.tl import functions
 from uniborg.util import admin_cmd
 import asyncio
@@ -11,18 +12,20 @@ import shutil
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 VERY_PIC = "http://lorempixel.com/500/500/" 
 
+def fetch_new_pic():
+    API_URL = "https://picsum.photos/1280"    
+    r = httpx.get(VERY_PIC, stream=True)    
+    profile_photo = Path('profile_photo.jpg')    
+    with open(profile_photo, 'wb') as f:
+        for chunk in r.stream():
+            f.write(chunk)    
+    return profile_photo
+
 @borg.on(admin_cmd(pattern="autopp"))
 async def autopic(event):
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
-    photo = "photo.png" 
-    while True:
-        downloaded_file_name = "./DOWNLOADS/original_pic.png"
-        downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=False)
-        downloader.start(blocking=False)
-        while not downloader.isFinished():
-           place_holder = None
-        counter = -30
-        shutil.copy(downloaded_file_name, photo)
+    while True:        
+        photo = fetch_new_pic()
         im = Image.open(photo)
         file_test = im.save(photo, "PNG")
         now_utc = datetime.now(timezone('UTC'))
@@ -62,8 +65,7 @@ async def autopic(event):
             await event.client(functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
                 file
             ))
-            os.remove(downloaded_file_name)
-            counter -= 30
+            photo.unlink()
             await asyncio.sleep(65)
         except:
             return
