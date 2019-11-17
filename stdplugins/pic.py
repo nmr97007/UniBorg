@@ -6,7 +6,6 @@ from telethon.tl import functions
 from uniborg.util import admin_cmd
 import asyncio
 import shutil
-from pySmartDL import SmartDL
 import urllib.request
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
@@ -17,10 +16,9 @@ async def autopic(event):
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
     while True: 
         photo = "photop.png"
-        try: 
-           downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=True)
-           downloader.start(blocking=False) 
-        except: 
+        try:
+           urllib.request.urlretrieve(VERY_PIC, downloaded_file_name) 
+        except:
               urllib.request.urlretrieve("https://telegra.ph/file/6aa1e4274cb3ca3770974.jpg", downloaded_file_name) 
         shutil.copy(downloaded_file_name, photo) 
         im = Image.open(photo)
