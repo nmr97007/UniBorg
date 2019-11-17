@@ -17,7 +17,7 @@ import asyncio
 import shutil
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-VERY_PIC = "https://picsum.photos/500" 
+VERY_PIC = "http://lorempixel.com/500/500/" 
 
 @borg.on(admin_cmd(pattern="autopp"))
 
