@@ -2,8 +2,6 @@ import os
 from datetime import datetime
 from pytz import timezone
 from PIL import Image, ImageDraw, ImageFont, ImageFile
-from pathlib import Path
-import httpx
 from telethon.tl import functions
 from uniborg.util import admin_cmd
 import asyncio
@@ -11,12 +9,22 @@ import shutil
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 VERY_PIC = "http://lorempixel.com/500/500/" 
+VERY_PIC2 = "http://picsum.photos/500"
 
 @borg.on(admin_cmd(pattern="autopp"))
 async def autopic(event):
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
     while True:  
-        photo = httpx.get(VERY_PIC, stream=True)      
+        downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=True)
+        downloader.start(blocking=False)  
+        while not downloader.isFinished():
+              place_holder = None  
+        if downloader.isSuccessful():
+           downloaded_file_name = "./DOWNLOADS/original_pic.png"            
+        else: 
+            downloader = SmartDL(VERY_PIC2, downloaded_file_name, progress_bar=True)
+            downloader.start(blocking=False)
+        shutil.copy(downloaded_file_name, photo) 
         im = Image.open(photo)
         file_test = im.save(photo, "PNG")
         now_utc = datetime.now(timezone('UTC'))
