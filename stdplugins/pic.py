@@ -12,20 +12,11 @@ import shutil
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 VERY_PIC = "http://lorempixel.com/500/500/" 
 
-def fetch_new_pic():
-    API_URL = "https://picsum.photos/1280"    
-    r = httpx.get(VERY_PIC, stream=True)    
-    profile_photo = Path('profile_photo.jpg')    
-    with open(profile_photo, 'wb') as f:
-        for chunk in r.stream():
-            f.write(chunk)    
-    return profile_photo
-
 @borg.on(admin_cmd(pattern="autopp"))
 async def autopic(event):
     downloaded_file_name = "./DOWNLOADS/original_pic.png"
-    while True:        
-        photo = fetch_new_pic()
+    while True:  
+        photo = httpx.get(VERY_PIC, stream=True)      
         im = Image.open(photo)
         file_test = im.save(photo, "PNG")
         now_utc = datetime.now(timezone('UTC'))
