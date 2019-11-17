@@ -9,8 +9,7 @@ import shutil
 from pySmartDL import SmartDL
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-VERY_PIC = "http://lorempixel.com/500/500/" 
-VERY_PIC2 = "http://picsum.photos/500"
+VERY_PIC = "http://picsum.photos/500"
 
 @borg.on(admin_cmd(pattern="autopp"))
 async def autopic(event):
@@ -24,7 +23,7 @@ async def autopic(event):
         if downloader.isSuccessful():
            downloaded_file_name = "./DOWNLOADS/original_pic.png"            
         else: 
-            downloader = SmartDL(VERY_PIC2, downloaded_file_name, progress_bar=True)
+            downloader = SmartDL(VERY_PIC, downloaded_file_name, progress_bar=True)
             downloader.start(blocking=False)
         shutil.copy(downloaded_file_name, photo) 
         im = Image.open(photo)
